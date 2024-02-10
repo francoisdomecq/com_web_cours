@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+    <link rel="stylesheet" href="../css/pub-link.css">
+<title>TP_1_JS</title>
+</head>
+<body class="pub-link">
+<header class="pub-link-header">
+    <div class="pub-link-header__content">
+        <h1 class="pub-link-header__title">Publink</h1>
+        <h2 class="pub-link-header__text">A social news web page built with javascript</h2>
+    </div>
+</header>
+<ul id="pub-link-grid" class="pub-link-grid">
+</ul>
+    <form class="pub-link-form">
+        <div id="title-input-div">
+            <label>
+                <input class="pub-link-input" placeholder="Title" id="title-input" oninput="handleInputChange()"/>
+            </label>
+        </div>
+        <div  id="url-input-div">
+            <label>
+                <input class="pub-link-input" placeholder="URL" id="url-input" oninput="handleInputChange()"/>
+            </label>
+        </div>
+        <div  id="author-input-div">
+            <label>
+                <input class="pub-link-input" placeholder="Author" id="author-input" oninput="handleInputChange()"/>
+            </label>
+        </div>
+
+        <button type="submit" onclick="handleSubmit()">
+            Add link
+        </button>
+    </form>
+
+
+</body>
+<script src="../js/pub-link.js"></script>
+</html>

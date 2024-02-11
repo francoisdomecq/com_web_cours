@@ -1,0 +1,101 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:css-import-order/recommended"
+  ],
+  "globals": {
+    "browser": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "plugins": [
+    "css-import-order"
+  ],
+  "rules": {
+    "array-bracket-spacing": [
+      "error"
+    ],
+    "brace-style": [
+      "error"
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "curly": [
+      "error"
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "unknown",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react*",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "*.scss",
+            "patternOptions": {
+              "matchBase": true
+            },
+            "group": "index",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "warnOnUnassignedImports": true
+      }
+    ],
+    "indent": [
+      "error",
+      4
+    ],
+    "keyword-spacing": [
+      "error"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 180
+      }
+    ],
+    "no-extra-semi": "error",
+    "no-shadow": [
+      "error"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "prefer-template": "error",
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ]
+  }
+}

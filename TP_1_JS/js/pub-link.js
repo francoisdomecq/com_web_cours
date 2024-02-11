@@ -88,9 +88,17 @@ const handleSubmit = ()=>{
     urlInput.value = ""
     authorInput.value = ""
 
-
-
     linkGrid.appendChild(linkToAdd)
   }
 }
+
+function hoist(){
+  var a =5
+  let x = 1
+  if(x==1){
+    var a =10
+  }
+}
+
+hoist()
 

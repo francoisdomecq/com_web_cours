@@ -40,12 +40,12 @@ const confirmedPasswordField = document.getElementById('confirm-password-input')
 const favouriteColorField = document.getElementById('favourite-color-input');
 const familyField = document.getElementById('family-select');
 
-usernameField.addEventListener('change', handleChangeUsername);
-emailField.addEventListener('change', handleChangeEmail);
-passwordField.addEventListener('change', handleChangePassword);
-confirmedPasswordField.addEventListener('change', handleChangeConfirmedPassword);
-favouriteColorField.addEventListener('change', handleChangeFavouriteColor);
-familyField.addEventListener('change', handleChangeFamily);
+usernameField.addEventListener('input', handleChangeUsername);
+emailField.addEventListener('input', handleChangeEmail);
+passwordField.addEventListener('input', handleChangePassword);
+confirmedPasswordField.addEventListener('input', handleChangeConfirmedPassword);
+favouriteColorField.addEventListener('input', handleChangeFavouriteColor);
+familyField.addEventListener('input', handleChangeFamily);
 
 const handleError=(errorField,hasError)=>{
   if(!hasError){

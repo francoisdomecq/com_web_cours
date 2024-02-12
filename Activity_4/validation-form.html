@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Validation form</title>
+        <link rel="stylesheet" href="./validation-form.css" />
+    </head>
+    <body>
+        <form id="validation-form" class="validation-form">
+
+            <label class="validation-form__input">
+                Pseudo
+                <input type="text" id="username-input" />
+                <span class="error-message--hidden" id="username-error">Votre pseudo doit contenir au moins 5 caractères</span>
+            </label>
+
+            <label class="validation-form__input">
+            Email
+                <input type="email" id="email-input" />
+                <span class="error-message--hidden" id="email-error">Votre email doit contenir au moins 5 caractères</span>
+            </label>
+
+            <label class="validation-form__input">
+            Mot de passe
+                <input type="password" id="password-input" />
+                <span class="error-message--hidden" id="password-error">Votre email doit contenir au moins 9 caractères, une majuscule, une minuscule et un caractère spécial</span>
+            </label>
+
+            <label class="validation-form__input">
+
+            Confirmer le mot de passe
+                <input type="password" id="confirm-password-input" />
+                <span class="error-message--hidden" id="confirm-password-error">Les mots de passe ne correspondent pas</span>
+            </label>
+
+            <label class="validation-form__input">
+            Quelle est votre couleur favorite ?
+                <input type="color" id="favourite-color-input" />
+                <span class="error-message--hidden" id="favourite-color-error">Vous devez sélectionner une couleur</span>
+            </label>
+
+            <label class="validation-form__input">
+            Choisir votre famille
+                <select id="family-select">
+                    <option>--Sélectionner une famille</option>
+                    <option value="verte">Verte</option>
+                    <option value="bleue">Bleue</option>
+                    <option value="rouge">Rouge</option>
+                    <option value="jaune">Jaune</option>
+                    <option value="orange">Orange</option>
+                </select>
+                <span class="error-message--hidden" id="family-error">Vous devez sélectionner une famille</span>
+            </label>
+
+            <button type="submit">Valider</button>
+        </form>
+        <script src="./validation-form.js"></script>
+    </body>
+</html>

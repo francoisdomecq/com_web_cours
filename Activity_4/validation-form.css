@@ -1,0 +1,18 @@
+.validation-form{
+    display:flex;
+    flex-direction: column;
+}
+
+.validation-form__input{
+    display:flex;
+    flex-direction: column;
+}
+
+.error-message--hidden{
+    display: none;
+}
+
+.error-message{
+    display: inline;
+    color:red
+}

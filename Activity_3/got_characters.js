@@ -17,7 +17,6 @@ const GOT_FAMILIES = [
 	}
 ]
 
-
 const handleFamilyClick= () => {
 	const selectedFamily = GOT_FAMILIES.find(family=> family.name === event.target.value)
 	const gotHouseCharacters = document.getElementById('got-house-characters')

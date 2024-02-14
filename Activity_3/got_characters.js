@@ -17,11 +17,11 @@ const GOT_FAMILIES = [
 	}
 ]
 
-const handleFamilyClick= () => {
+const handleFamilyClick= (event) => {
 	const selectedFamily = GOT_FAMILIES.find(family=> family.name === event.target.value)
 	const gotHouseCharacters = document.getElementById('got-house-characters')
 	gotHouseCharacters.innerHTML = ''
-	selectedFamily.members.map(member=>{
+	selectedFamily.members.forEach(member=>{
 		const li = document.createElement('li')
 		li.textContent = member
 		gotHouseCharacters.appendChild(li)
@@ -31,7 +31,7 @@ const handleFamilyClick= () => {
 const gotFamilySelect = document.getElementById('got-house-select')
 gotFamilySelect.addEventListener('change', handleFamilyClick)
 
-GOT_FAMILIES.map(family=>{
+GOT_FAMILIES.forEach(family=>{
 	const option = document.createElement('option')
 	option.value = family.name
 	option.textContent = family.name

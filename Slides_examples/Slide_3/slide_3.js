@@ -26,4 +26,4 @@ const constTest=()=>{
 
 //letTest()
 //varTest()
-//constTest()
+constTest()

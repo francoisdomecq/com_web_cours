@@ -6,9 +6,8 @@ for (let i = 0; i < array.length; i++) {
 }
 
 // For each iteration does not return a new array, it just iterates over the array
-const newArrayForEach = array.forEach((element) => {
-	console.log(element)
-	return element * 2
+array.forEach((a) => {
+	console.log(a)
 })
 
 console.log(array,newArrayForEach)

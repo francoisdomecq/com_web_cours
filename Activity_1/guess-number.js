@@ -15,8 +15,8 @@ while (!hasUserGuessedNumber && attemptNumber < MAX_ATTEMPT_NUMBER) {
 		hasUserGuessedNumber = true
 		alert('You found the number')
 	} else if(userNumber < numberToGuess) {
-		alert('The number to guess is higher')
+		alert(`The number to guess is higher, you have ${MAX_ATTEMPT_NUMBER - attemptNumber} attempts left`)
 	} else {
-		alert('The number to guess is lower')
+		alert(`The number to guess is lower, you have ${MAX_ATTEMPT_NUMBER - attemptNumber} attempts left`)
 	}
 }

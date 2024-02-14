@@ -1,4 +1,24 @@
-const handleInputChange = ()=>{
+let title=''
+let url=''
+let author=''
+
+const titleInput = document.getElementById('title-input')
+const urlInput = document.getElementById('url-input')
+const authorInput = document.getElementById('author-input')
+const submitButton = document.getElementById('submit-button')
+
+const handleChangeTitle = (event)=>{
+	title = event.target.value
+	event.target.classList.remove('pub-link-input--error')
+}
+
+const handleChangeUrl = (event)=>{
+	url = event.target.value
+	event.target.classList.remove('pub-link-input--error')
+}
+
+const handleChangeAuthor = (event)=>{
+	author = event.target.value
 	event.target.classList.remove('pub-link-input--error')
 }
 
@@ -31,11 +51,10 @@ const createLinkAuthor = (author)=>{
 const createLink = (title,url,author)=>{
 	const linkLi = document.createElement('li')
 	linkLi.classList.add('pub-link-grid__link')
-	const link = document.createElement('div')
 
-	linkTitle = createLinkTitle(title)
-	linkUrl = createLinkUrl(url)
-	linkAuthor = createLinkAuthor(author)
+	const linkTitle = createLinkTitle(title)
+	const linkUrl = createLinkUrl(url)
+	const linkAuthor = createLinkAuthor(author)
 
 	linkLi.appendChild(linkTitle)
 	linkLi.appendChild(linkUrl)
@@ -59,38 +78,32 @@ const handleSubmit = ()=>{
 	const urlDiv = document.getElementById('url-input-div')
 	const authorDiv = document.getElementById('author-input-div')
 
-	const titleInput = document.getElementById('title-input')
-	const urlInput = document.getElementById('url-input')
-	const authorInput = document.getElementById('author-input')
-
-	const titleValue = titleInput.value
-	const urlValue = urlInput.value
-	const authorValue = authorInput.value
-
-	if(!titleValue){
+	if(!title){
 		if(!document.getElementById('error-message')){
 			titleDiv.appendChild(createErrorMessage())
 		}
-	} else if(!urlValue){
+	} else if(!url){
 		if(!document.getElementById('error-message')){
 			urlDiv.appendChild(createErrorMessage())
 		}
-	} else if(!authorValue){
+	} else if(!author){
 		if(!document.getElementById('error-message')){
 			authorDiv.appendChild(createErrorMessage())
 		}
 	} else {
 		const linkGrid = document.getElementById('pub-link-grid')
 
-		const linkToAdd = createLink(titleValue,urlValue,authorValue)
+		const linkToAdd = createLink(title,url,author)
 
-		titleInput.value = ''
-		urlInput.value = ''
-		authorInput.value = ''
-
-
+		title= ''
+		url= ''
+		author = ''
 
 		linkGrid.appendChild(linkToAdd)
 	}
 }
 
+titleInput.addEventListener('input',handleChangeTitle)
+urlInput.addEventListener('input',handleChangeUrl)
+authorInput.addEventListener('input',handleChangeAuthor)
+submitButton.addEventListener('click',handleSubmit)

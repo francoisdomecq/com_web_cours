@@ -4,13 +4,13 @@ function hoistingWorking(){
 	console.log('This function can be called before it is defined')
 }
 
-//hoistingNotWorking()
+hoistingNotWorking()
 
 const hoistingNotWorking =()=>{
 	console.log('This function cannot be called before it is defined')
 }
 
-//hoistingNotWorkingBis()
+hoistingNotWorkingBis()
 
 const hoistingNotWorkingBis = function(){
 	console.log('This function cannot be called before it is defined')

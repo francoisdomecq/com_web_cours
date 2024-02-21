@@ -1,0 +1,28 @@
+* {
+    font-family: sans-serif;
+}
+
+.load-users-btn {
+    background: rgb(22, 51, 123);
+    padding: 10px 30px;
+    border-radius: 10px; 
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    width: fit-content;
+    color: white;
+    cursor: pointer;
+}
+
+.user-list {
+    width: 60vh;
+    margin: 20px auto;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-top: solid 10px rgb(22, 51, 123);
+    padding: 10px;
+}
+
+.user-list li {
+    list-style: none;
+    border-bottom: solid 1px rgb(213, 213, 213);
+}

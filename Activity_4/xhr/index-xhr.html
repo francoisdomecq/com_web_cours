@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang = 'fr' >
+    <head>
+        <meta charset = 'utf-8' />
+        <title>API Activity 4</title>
+        <link rel="stylesheet" href="../style.css" >
+    </head>
+
+    <body>
+        <form id="submit-user-form" class="submit-user-form" method="POST" action="#">
+            <div>
+                <label for="first-name">Prénom</label>
+                <input type="text" name="firstname" id="first-name" placeholder="John">
+            </div>
+
+            <div>
+                <label for="last-name">Nom</label>
+                <input type="text" name="lastname" id="last-name" placeholder="Do">
+            </div>
+            <div>
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" placeholder="******">
+            </div>
+            <button type="submit" class="submit-btn">Envoyer</button>
+        </form>
+
+        <ul id="users" class="user-list"></ul>
+
+        <div id="popup-bg">
+            <div id="popup">
+                <p>Etes-vous sur de vouloir supprimer cet utilisateur: <span id="current-user">Gabriel Nativel-Fontaine</span></p>
+                <div id="action-buttons" class="action-buttons">
+                    <p id="delete-button" class="delete-button">Supprimer</p>
+                    <p id="cancel-button" class="cancel-button">Annuler</p>
+                </div>
+            </div>
+        </div>
+        <script src="./index-xhr.js"></script>
+    </body>
+</html>

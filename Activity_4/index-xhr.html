@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang = 'fr' >
+    <head>
+        <meta charset = 'utf-8' />
+        <title>Titre de la page</title>
+        <link rel="stylesheet" href="../style.css" >
+    </head>
+
+    <body>
+        <form id="myform" method="POST" action="#">
+            <div>
+                <label for="prenom">Prénom</label>
+                <input type="text" name="prenom" id="prenom" placeholder="John">
+            </div>
+    
+            <div>
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" id="nom" placeholder="Do">
+            </div>
+    
+            <div>
+                <label for="pass">Mot de passe</label>
+                <input type="password" name="pass" id="pass" placeholder="******">
+            </div>
+    
+            <button type="submit">Envoyer</button>
+        </form>
+
+        <div id="users"></div>
+
+        <div id="popup-bg">
+            <div id="popup">
+                <p>Etes-vous sur de vouloir supprimer cet utilisateur: <span id="current-user">Gabriel Nativel-Fontaine</span></p>
+                <div id="btns">
+                    <p id="btn-supprimer">Supprimer</p>
+                    <p id="btn-annuler">Annuler</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let currentUserID;
+            let currentUser;
+
+            const users = document.getElementById('users');
+            let uri = "https://api1.cogform.fr/users";
+
+            const sendUser = (prenom, nom, password) => {
+                var data = JSON.stringify({
+                    "prenom": prenom,
+                    "nom": nom,
+                    "password": password
+                });
+                
+                var xhr = new XMLHttpRequest();
+                xhr.addEventListener("readystatechange", function() {
+                    getUsers();
+                });
+                xhr.open("PUT", uri + "/" + currentUserID);
+                xhr.setRequestHeader("X-API-Key", "");
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.send(data);
+            }
+           
+            const getUsers = () => {
+                var xhr = new XMLHttpRequest();
+                xhr.addEventListener("readystatechange", function() {
+                    if(this.readyState === 4) {
+                        let userList = JSON.parse(this.responseText);
+                        displayUsers(userList);
+                    }
+                });
+
+                xhr.open("GET", uri);
+                xhr.setRequestHeader("X-API-Key", " ");
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.send();
+            }
+
+            const deleteUser = () => {
+                if(currentUserID == null) return;
+
+                var xhr = new XMLHttpRequest();
+                xhr.addEventListener("readystatechange", function() {
+                    if(this.readyState === 4) {
+                        getUsers();
+                    }
+                });
+
+                xhr.open("DELETE", "https://api1.cogform.fr/users/" + currentUserID);
+                xhr.setRequestHeader("X-API-Key", " ");
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.send();
+            }
+
+
+            const popup = document.getElementById('popup-bg');
+            const btn_stop = document.getElementById('btn-annuler');
+            btn_stop.addEventListener('click', () => {
+                popup.style.display = "none";
+                currentUserID = null;
+            })
+
+            const btn_suppr = document.getElementById('btn-supprimer');
+            btn_suppr.addEventListener('click', () => {
+                deleteUser();
+                popup.style.display = "none";
+                currentUserID = null;
+            })
+            
+            const displayUsers = (userList) => {
+                users.innerHTML = "";
+
+                userList.forEach(usr => {
+                    let listItem = document.createElement('div');
+                        listItem.classList.add('list-item');
+                    
+                    let usrItem = document.createElement('p');
+                        usrItem.innerText = `${usr.prenom} ${usr.nom}`;
+                        usrItem.addEventListener('click', () => {
+                            currentUserID = trash.getAttribute('userId');
+                            currentUser = trash.getAttribute('username');
+
+                            document.getElementById('prenom').value = usr.prenom;
+                            document.getElementById('nom').value = usr.nom;
+                            document.getElementById('pass').value = usr.pass;
+                        })
+                        listItem.appendChild(usrItem);
+
+                    let trash = document.createElement('p');
+                        trash.innerText = 'Supprimer';
+                        trash.setAttribute('userId', usr.id);
+                        trash.setAttribute('username', usr.prenom + " " + usr.nom);
+                        trash.classList.add('trash');
+                        listItem.appendChild(trash);
+
+                        trash.addEventListener('click', () => {
+                            popup.style.display = "flex";
+                            currentUserID = trash.getAttribute('userId');
+                            currentUser = trash.getAttribute('username');
+
+                            document.getElementById('current-user').innerText = trash.getAttribute('username');
+                        })
+
+                    users.appendChild(listItem);
+                });
+            }
+            
+            const form = document.getElementById('myform');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                sendUser(e.target[0].value, e.target[1].value, e.target[2].value);
+            });
+
+            getUsers();
+        </script>
+    </body>
+</html>

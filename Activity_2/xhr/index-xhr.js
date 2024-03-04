@@ -13,7 +13,9 @@ const sendUser = (firstName, lastName, password, pseudo) => {
 
 	const xhr = new XMLHttpRequest()
 	xhr.addEventListener('readystatechange', function() {
-		getUsers()
+		if(this.readyState === 4){
+			getUsers()
+		}
 	})
 	xhr.open('POST', API_URI)
 	xhr.setRequestHeader('X-API-Key', API_KEY)
@@ -50,13 +52,13 @@ const displayUsers = (users) => {
 }
 
 const formElement = document.getElementById('submit-user-form')
-formElement.addEventListener('submit', (e) => {
-	e.preventDefault()
-	const firstName = e.target[0].value
-	const lastName = e.target[1].value
-	const password = e.target[2].value
-	const pseudo = e.target[3].value
-	sendUser(firstName, lastName, password,pseudo)
+formElement.addEventListener('submit', (event) => {
+	event.preventDefault()
+	const firstName = event.target[0].value
+	const lastName = event.target[1].value
+	const password = event.target[2].value
+	const pseudo = event.target[3].value
+	sendUser(firstName, lastName, password, pseudo)
 })
 
 getUsers()

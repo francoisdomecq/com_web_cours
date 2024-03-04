@@ -1,12 +1,14 @@
-const userList = document.getElementById('users')
-const API_URI = 'https://api1.cogform.fr/users'
-const API_KEY = '9W2lJN38SCCp-C2Lr_CI'
+const API_URI = 'https://api.cogform.fr/users'
+const API_KEY = 'aaa'
 
-const sendUser = (firstName, lastName, password) => {
+const userList = document.getElementById('users')
+
+const sendUser = (firstName, lastName, password, pseudo) => {
 	const newUser = JSON.stringify({
 		'prenom': firstName,
 		'nom': lastName,
-		'password': password
+		'password': password,
+		'pseudo':pseudo
 	})
 
 	const xhr = new XMLHttpRequest()
@@ -53,7 +55,8 @@ formElement.addEventListener('submit', (e) => {
 	const firstName = e.target[0].value
 	const lastName = e.target[1].value
 	const password = e.target[2].value
-	sendUser(firstName, lastName, password)
+	const pseudo = e.target[3].value
+	sendUser(firstName, lastName, password,pseudo)
 })
 
 getUsers()

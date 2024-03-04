@@ -1,21 +1,19 @@
-const  API_KEY = '9W2lJN38SCCp-C2Lr_CI'
-const API_URI = 'https://api1.cogform.fr/users'
+const  API_KEY = 'aaa'
+const API_URI = 'https://api.cogform.fr/users'
 
 const userList = document.getElementById('users')
 
 const displayUsers = () => {
 	userList.innerHTML = ''
-
 	const xhr = new XMLHttpRequest()
 
-	xhr.addEventListener('readystatechange', ()=> {
+	xhr.addEventListener('readystatechange', function() {
 		if(this.readyState === 4) {
-			let fetchedUsers = JSON.parse(this.responseText)
+			const fetchedUsers = JSON.parse(this.responseText)
 
 			fetchedUsers.forEach(user => {
-				let listItem = document.createElement('li')
-				listItem.innerText = `${user.prenom} ${user.nom}`
-
+				const listItem = document.createElement('li')
+				listItem.innerText = `${user.nom} ${user.prenom}`
 				userList.appendChild(listItem)
 			})
 		}

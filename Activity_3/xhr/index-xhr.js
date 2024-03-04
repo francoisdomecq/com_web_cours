@@ -1,6 +1,5 @@
-const API_KEY = '9W2lJN38SCCp-C2Lr_CI'
-
-const API_URI = 'https://api1.cogform.fr/users'
+const API_URI = 'https://api.cogform.fr/users'
+const API_KEY = 'aaa'
 
 let currentUserId
 

@@ -1,17 +1,18 @@
 let currentUserId=''
 
-const API_URI = 'https://api1.cogform.fr/users'
-const API_KEY = '9W2lJN38SCCp-C2Lr_CI'
+const API_URI = 'https://api.cogform.fr/users'
+const API_KEY = 'aaa'
 
 const requestHeaders = new Headers()
 requestHeaders.append('X-API-Key', API_KEY)
 requestHeaders.append('Content-Type', 'application/json')
 
-const sendUser = (firstName, lastName, password) => {
+const sendUser = (firstName, lastName, password, pseudo) => {
 	const newUser = JSON.stringify({
 		'prenom': firstName,
 		'nom': lastName,
-		'password': password
+		'password': password,
+		'pseudo': pseudo
 	})
 
 	const requestOptions = {
@@ -26,13 +27,12 @@ const sendUser = (firstName, lastName, password) => {
 		.catch((error) => console.error('error',error))
 }
 
-const updateUser = (firstName,lastName)=>{
+const updateUser = (firstName,lastName, pseudo)=>{
 	const newUser = JSON.stringify({
 		'prenom': firstName,
 		'nom': lastName,
+		'pseudo':pseudo
 	})
-
-	console.log(currentUserId,newUser)
 
 	const requestOptions = {
 		method: 'PUT',
@@ -73,12 +73,18 @@ const deleteUser = () => {
 		.catch((error)=>console.error(error))
 }
 
-const selectUser = (event,actionType)=>{
+const selectUser = (event,actionType,user)=>{
 	currentUserId = event.target.getAttribute('userId')
 	if(actionType==='delete'){
 		deletePopup.style.display = 'flex'
 	} else if (actionType==='update'){
 		updatePopup.style.display='flex'
+		const updateFirstNameDiv = document.getElementById('update-first-name')
+		const updateLastNameDiv = document.getElementById('update-last-name')
+		const updatePseudoDiv = document.getElementById('update-pseudo')
+		updateFirstNameDiv.value = user.prenom
+		updateLastNameDiv.value = user.nom
+		updatePseudoDiv.value = user.pseudo
 	}
 }
 
@@ -104,11 +110,10 @@ const createModifyUserElement = (listItem,user)=>{
 	const modifyUserButton = document.createElement('p')
 	modifyUserButton.innerText = 'Modifier'
 	modifyUserButton.setAttribute('userId', user.id)
-	modifyUserButton.setAttribute('username', user.prenom + ' ' + user.nom)
 	modifyUserButton.classList.add('update')
 	listItem.appendChild(modifyUserButton)
 
-	modifyUserButton.addEventListener('click', (event)=>selectUser(event,'update'))
+	modifyUserButton.addEventListener('click', (event)=>selectUser(event,'update',user))
 }
 
 const deletePopup = document.getElementById('delete-popup-bg')
@@ -149,14 +154,15 @@ deleteButton.addEventListener('click', () => {
 	currentUserId = null
 })
 
-getUsers()
-
 const submitUpdateButton = document.getElementById('update-user-form')
 submitUpdateButton.addEventListener('submit',(event)=>{
 	event.preventDefault()
 	const firstName= event.target[0].value
 	const lastName = event.target[1].value
-	updateUser(firstName,lastName)
+	const pseudo = event.target[2].value
+	updateUser(firstName,lastName,pseudo)
 	updatePopup.style.display = 'none'
 	currentUserId = null
 })
+
+getUsers()

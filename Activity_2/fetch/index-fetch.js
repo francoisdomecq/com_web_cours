@@ -1,5 +1,5 @@
-const  API_URI = 'https://api1.cogform.fr/users'
-const  API_KEY = '9W2lJN38SCCp-C2Lr_CI'
+const  API_URI = 'https://api.cogform.fr/users'
+const  API_KEY = 'aaa'
 
 const requestHeaders = new Headers()
 requestHeaders.append('X-API-Key', API_KEY)
@@ -17,11 +17,12 @@ const getUsers = () => {
 		.catch((error) => console.error(error))
 }
 
-const sendUser = (firstName, lastName, password) => {
+const sendUser = (firstName, lastName, password, pseudo) => {
 	const newUser = JSON.stringify({
 		'prenom': firstName,
 		'nom': lastName,
-		'password': password
+		'password': password,
+		'pseudo': pseudo
 	})
 
 	const requestOptions = {
@@ -56,7 +57,8 @@ formElement.addEventListener('submit', (event) => {
 	const firstName = event.target[0].value
 	const lastName = event.target[1].value
 	const password = event.target[2].value
-	sendUser(firstName, lastName, password)
+	const pseudo = event.target[3].value
+	sendUser(firstName, lastName, password, pseudo)
 })
 
 getUsers()

@@ -26,14 +26,33 @@
 
         <ul id="users" class="user-list"></ul>
 
-        <div id="popup-bg">
-            <div id="popup">
+        <div id="delete-popup-bg" class="pop-up--bg">
+            <div id="delete-popup" class="pop-up">
                 <p>Etes-vous sur de vouloir supprimer cet utilisateur: <span id="current-user"></span></p>
                 <div id="action-buttons" class="action-buttons">
                     <p id="delete-button" class="delete-button">Supprimer</p>
                     <p id="cancel-button" class="cancel-button">Annuler</p>
                 </div>
             </div>
+        </div>
+
+        <div id="update-popup-bg" class="pop-up--bg">
+            <form id="update-user-form" class="submit-user-form pop-up" method="POST" action="#">
+                <div>
+                    <label for="update-first-name">Prénom</label>
+                    <input type="text" name="firstname" id="update-first-name" placeholder="John">
+                </div>
+
+                <div>
+                    <label for="update-last-name">Nom</label>
+                    <input type="text" name="lastname" id="update-last-name" placeholder="Do">
+                </div>
+                <div>
+                    <label for="update-pseudo">Pseudo</label>
+                    <input type="text" name="pseudo" id="update-pseudo" placeholder="Do">
+                </div>
+                <button type="submit" class="submit-btn">Envoyer</button>
+            </form>
         </div>
         <script src="./index-xhr.js"></script>
     </body>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang = 'fr' >
+    <head>
+        <meta charset = 'utf-8' />
+        <title>Titre de la page</title>
+        <link rel="stylesheet" href="style.css" >
+    </head>
+
+    <body>
+        <form id="myform" method="POST" action="#">
+            <p id="errorMessage">Les identifiants renseignés sont erronés !</p>
+            <div>
+                <label for="identifiant">Identifiant</label>
+                <input type="text" name="identifiant" id="identifiant" placeholder="johndo">
+            </div>
+
+            <div>
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="mdp" id="mdp" placeholder="***">
+            </div>
+            <button type="submit">Envoyer</button>
+        </form>
+        <form id="mysecretform" method="POST" action="#">
+
+            <div>
+                <label for="mdp">Nouveau mot de passe</label>
+                <input type="password" name="mdp" id="mdp" placeholder="***">
+            </div>
+
+
+            <button type="submit">Envoyer</button>
+
+            <p id="btnDisconnect">Se déconnecter</p>
+        </form>
+
+
+
+        <script src="./index-xhr.js"></script>
+    </body>
+</html>

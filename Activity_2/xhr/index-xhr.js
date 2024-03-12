@@ -53,6 +53,7 @@ const displayUsers = (users) => {
 
 const formElement = document.getElementById('submit-user-form')
 formElement.addEventListener('submit', (event) => {
+	console.log(event)
 	event.preventDefault()
 	const firstName = event.target[0].value
 	const lastName = event.target[1].value

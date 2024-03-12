@@ -12,7 +12,7 @@ const sendUser = (firstName, lastName, password, pseudo) => {
 		'prenom': firstName,
 		'nom': lastName,
 		'password': password,
-		'pseudo': pseudo
+		'pseudo': firstName+ lastName
 	})
 
 	const requestOptions = {
@@ -59,7 +59,7 @@ const getUsers = () => {
 }
 
 
-const deleteUser = () => {
+const deleteUser =   () => {
 	if(currentUserId == null) return
 
 	const requestOptions  = {
@@ -71,6 +71,18 @@ const deleteUser = () => {
 		.then((response) => response.json())
 		.then(()=>getUsers())
 		.catch((error)=>console.error(error))
+
+	const a =  	fetch(`${API_URI}/${currentUserId}`,requestOptions)
+}
+
+const m = async()=>{
+	const requestOptions  = {
+		method: 'DELETE',
+		headers: requestHeaders
+	}
+
+	return fetch(`${API_URI}/${currentUserId}`,requestOptions)
+
 }
 
 const selectUser = (event,actionType,user)=>{

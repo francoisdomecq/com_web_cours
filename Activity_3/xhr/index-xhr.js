@@ -9,7 +9,8 @@ const sendUser = (firstName, lastName, password) => {
 	const newUser = JSON.stringify({
 		'prenom': firstName,
 		'nom': lastName,
-		'password': password
+		'password': password,
+		'pseudo': firstName + lastName
 	})
 
 	const xhr = new XMLHttpRequest()
@@ -53,6 +54,7 @@ const deleteUser = () => {
 	xhr.setRequestHeader('Content-Type', 'application/json')
 
 	xhr.send()
+
 }
 
 
